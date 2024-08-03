@@ -5,23 +5,23 @@ import { Textarea } from "@nextui-org/react";
 import { TextGenerateEffect } from "../components/ui/text-generate-effect";
 import { SearchIcon } from "../components/icons";
 import { Spinner } from "@nextui-org/react";
-import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+// import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 export default function Home() {
   const [prompt, setPrompt] = useState<string>("");
   const [generatedText, setGeneratedText] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const { transcript, listening, resetTranscript } = useSpeechRecognition();
+  // const { transcript, listening, resetTranscript } = useSpeechRecognition();
 
-  const handleVoiceInput = () => {
-    if (!listening) {
-      SpeechRecognition.startListening({ continuous: true });
-    } else {
-      SpeechRecognition.stopListening();
-      setPrompt(transcript);
-      resetTranscript();
-    }
-  };
+  // const handleVoiceInput = () => {
+  //   if (!listening) {
+  //     SpeechRecognition.startListening({ continuous: true });
+  //   } else {
+  //     SpeechRecognition.stopListening();
+  //     setPrompt(transcript);
+  //     resetTranscript();
+  //   }
+  // };
 
   const SubmitForm = async (e: MouseEvent | React.FormEvent) => {
     e.preventDefault();
@@ -52,7 +52,7 @@ export default function Home() {
           label="Search"
           radius="lg"
           onChange={(e) => setPrompt(e.target.value)}
-          value={prompt || transcript}
+          value={prompt}
           onKeyDown={(e) => handleKeyDown(e)}
           classNames={{
             label: "text-black/50 dark:text-white/90",
@@ -85,13 +85,13 @@ export default function Home() {
                 className="text-black/50 mb-0.5 dark:text-white/90 text-slate-400 cursor-pointer flex-shrink-0"
                 onClick={SubmitForm}
               />
-              <button
+              {/* <button
                 type="button"
                 onClick={handleVoiceInput}
                 className="ml-2"
               >
                 {listening ? "Stop Listening" : "Voice Input"}
-              </button>
+              </button> */}
             </>
           }
         />
