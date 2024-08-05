@@ -7,7 +7,7 @@ export const TextGenerateEffect = ({
   words,
   className,
   filter = true,
-  duration = 0.2,
+  duration = 0.1, // Decrease duration for faster animation
 }: {
   words: string;
   className?: string;
@@ -16,6 +16,7 @@ export const TextGenerateEffect = ({
 }) => {
   const [scope, animate] = useAnimate();
   let wordsArray = words?.split(" ");
+  
   useEffect(() => {
     animate(
       "span",
@@ -24,8 +25,8 @@ export const TextGenerateEffect = ({
         filter: filter ? "blur(0px)" : "none",
       },
       {
-        duration: duration ? duration : 1,
-        delay: stagger(0.1),
+        duration: duration, // Use the provided duration
+        delay: stagger(0.05), // Decrease stagger delay for faster sequence
       }
     );
   }, [scope.current]);
@@ -53,7 +54,7 @@ export const TextGenerateEffect = ({
   return (
     <div className={cn("w-8/12", className)}>
       <div className="mt-4">
-        <div className=" dark:text-white text-black  leading-snug tracking-wide">
+        <div className="dark:text-white text-black leading-snug tracking-wide">
           {renderWords()}
         </div>
       </div>
