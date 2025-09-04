@@ -14,8 +14,7 @@ module.exports = {
     extend: {},
   },
   darkMode: "class",
-  darkMode: "class",
- plugins: [nextui()],
+  plugins: [nextui(), require("@tailwindcss/typography")],
 }
 
 // This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
