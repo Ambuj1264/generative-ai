@@ -1,12 +1,13 @@
+"use client";
+
 import React from "react";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
-import { CiCoffeeCup } from "react-icons/ci";
 export default function ModalButton() {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   return (
     <>
-      <Button onPress={onOpen}><CiCoffeeCup />  Buy me a Coffee</Button>
+      <Button onPress={onOpen}>☕ Buy me a Coffee</Button>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
